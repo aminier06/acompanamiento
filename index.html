@@ -873,7 +873,15 @@
     </form>
 
     <div class="pie">
-      Estructura optimizada para mantener fidelidad con el instrumento original y preparada para integración posterior con base de datos o servicios de autocompletado.
+      <div class="pie" style="text-align:center; line-height:1.6;">
+  &copy; <span id="year"></span> Ministerio de Educación (MINERD). Dirección de Educación Primaria.<br>
+  Instrumento elaborado por el equipo técnico de la Dirección de Educación Primaria.<br>
+  Desarrollo tecnológico: Aneudy Minier.
+</div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
     </div>
   </div>
 
