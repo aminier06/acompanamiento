@@ -64,28 +64,6 @@
       max-width: 1050px;
     }
 
-    .acciones {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      padding: 16px 32px;
-      background: #f8fbfe;
-      border-bottom: 1px solid #ddeaf4;
-    }
-
-    button {
-      border: none;
-      border-radius: 10px;
-      padding: 12px 16px;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .btn-primario { background: var(--azul); color: #fff; }
-    .btn-secundario { background: #e8f3fb; color: var(--azul-oscuro); }
-    .btn-peligro { background: #fde8e8; color: var(--rojo); }
-
     form { padding: 24px 32px 36px; }
 
     .bloque {
@@ -137,11 +115,6 @@
       font-size: 14px;
       font-weight: 700;
       color: #243b53;
-    }
-
-    .campo small {
-      color: #5a6d80;
-      font-size: 12px;
     }
 
     input[type="text"],
@@ -208,7 +181,8 @@
     }
 
     .opcion input,
-    .grado-box input {
+    .grado-box input,
+    .sugerencia-item input {
       accent-color: var(--azul);
     }
 
@@ -225,7 +199,6 @@
       color: #5b6b7d;
     }
 
-    .estado-ok { color: #0f766e; font-weight: 700; }
     .estado-aviso { color: #b45309; font-weight: 700; }
 
     .fila-linea {
@@ -244,7 +217,8 @@
       line-height: 1.55;
     }
 
-    .resumen-automatico {
+    .resumen-automatico,
+    .sugerencias-acuerdos {
       margin-top: 16px;
       border: 1px solid #d7e7f2;
       border-radius: 12px;
@@ -252,7 +226,8 @@
       padding: 16px;
     }
 
-    .resumen-automatico h3 {
+    .resumen-automatico h3,
+    .sugerencias-acuerdos h3 {
       margin: 0 0 12px;
       font-size: 16px;
       color: var(--azul-oscuro);
@@ -277,7 +252,7 @@
     .porcentajes-niveles {
       margin-top: 14px;
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
     }
 
@@ -308,6 +283,59 @@
       font-size: 11px;
       color: #617384;
       line-height: 1.35;
+    }
+
+    .sugerencias-acuerdos p {
+      margin: 0 0 12px;
+      font-size: 13px;
+      color: #5b6b7d;
+      line-height: 1.5;
+    }
+
+    .lista-sugerencias {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .sugerencia-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid #d9e7f2;
+      border-radius: 12px;
+      padding: 12px;
+      background: #fff;
+    }
+
+    .sugerencia-codigo {
+      font-weight: 800;
+      color: var(--azul-oscuro);
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .sugerencia-texto {
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--texto);
+    }
+
+    .sugerencia-vacia {
+      padding: 12px;
+      border: 1px dashed #cfe3f2;
+      border-radius: 12px;
+      font-size: 13px;
+      color: #617384;
+      background: #fbfdff;
+    }
+
+    .acciones-sugerencias,
+    .acciones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .tabla-wrap {
@@ -360,8 +388,6 @@
 
     .valoracion input { transform: scale(1.1); }
 
-    .lineas-firmas { margin-top: 16px; }
-
     .firmas {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -385,10 +411,31 @@
       margin: 20px auto 0;
     }
 
+    .acciones {
+      margin-top: 20px;
+      padding-top: 14px;
+      border-top: 1px solid #ddeaf4;
+    }
+
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-primario { background: var(--azul); color: #fff; }
+    .btn-secundario { background: #e8f3fb; color: var(--azul-oscuro); }
+    .btn-peligro { background: #fde8e8; color: var(--rojo); }
+
     .pie {
       padding: 0 32px 28px;
       font-size: 12px;
       color: #617384;
+      text-align: center;
+      line-height: 1.6;
     }
 
     .oculto { display: none !important; }
@@ -398,16 +445,8 @@
         grid-template-columns: 1fr;
       }
 
-      .contenedor {
-        margin: 0;
-        border-radius: 0;
-      }
-
-      .encabezado, .acciones, form, .pie {
-        padding-left: 18px;
-        padding-right: 18px;
-      }
-
+      .contenedor { margin: 0; border-radius: 0; }
+      .encabezado, form, .pie { padding-left: 18px; padding-right: 18px; }
       .encabezado h1 { font-size: 24px; }
     }
 
@@ -431,27 +470,15 @@
         max-width: 100%;
       }
 
-      .acciones {
-        display: none !important;
-      }
-
-      form {
-        padding: 0;
-      }
+      .acciones { display: none !important; }
+      form { padding: 0; }
 
       .encabezado {
         padding: 16px 18px 14px;
       }
 
-      .encabezado .subtitulo-superior {
-        font-size: 11px;
-        margin-bottom: 2px;
-      }
-
-      .encabezado h1 {
-        font-size: 18px;
-        margin: 6px 0 6px;
-      }
+      .encabezado .subtitulo-superior { font-size: 11px; margin-bottom: 2px; }
+      .encabezado h1 { font-size: 18px; margin: 6px 0 6px; }
 
       .encabezado p,
       .bloque-titulo,
@@ -468,73 +495,33 @@
         font-size: 10px !important;
       }
 
-      .bloque {
-        break-inside: avoid;
-        margin-bottom: 10px;
-      }
-
-      .bloque-cuerpo {
-        padding: 10px;
-      }
-
-      .tabla-wrap {
-        overflow: visible !important;
-        border: 1px solid #dbe7f0;
-      }
+      .bloque { break-inside: avoid; margin-bottom: 10px; }
+      .bloque-cuerpo { padding: 10px; }
+      .tabla-wrap { overflow: visible !important; }
 
       table {
         width: 100% !important;
         min-width: 0 !important;
         table-layout: fixed;
         border-collapse: collapse;
-        page-break-inside: auto;
       }
 
-      thead {
-        display: table-header-group;
-      }
+      thead { display: table-header-group; }
+      tr { page-break-inside: avoid; }
 
-      tfoot {
-        display: table-footer-group;
-      }
-
-      tr {
-        page-break-inside: avoid;
-      }
-
-      th,
-      td {
+      th, td {
         white-space: normal !important;
         word-break: break-word;
         overflow-wrap: anywhere;
         padding: 4px 3px;
       }
 
-      .col-codigo {
-        width: 6% !important;
-      }
-
-      .col-indicador {
-        width: 42% !important;
-        min-width: 0 !important;
-      }
-
-      .col-valor {
-        width: 5.5% !important;
-      }
-
-      .col-obs {
-        width: 30% !important;
-        min-width: 0 !important;
-      }
-
-      .valoracion input {
-        transform: scale(0.9);
-      }
-
-      textarea {
-        min-height: 52px !important;
-      }
+      .col-codigo { width: 6% !important; }
+      .col-indicador { width: 42% !important; min-width: 0 !important; }
+      .col-valor { width: 5.5% !important; }
+      .col-obs { width: 30% !important; min-width: 0 !important; }
+      .valoracion input { transform: scale(0.9); }
+      textarea { min-height: 52px !important; }
     }
   </style>
 </head>
@@ -546,9 +533,7 @@
       <div class="subtitulo-superior">Viceministerio de Servicios Técnicos y Pedagógicos</div>
       <div class="subtitulo-superior">Dirección de Educación Primaria</div>
       <h1>Instrumento de Acompañamiento al Docente</h1>
-      <p>
-        Propósito: acompañar al docente del Nivel Primario en su práctica pedagógica, identificando las fortalezas y oportunidades de mejora sobre las cuales se construyen acuerdos y compromisos, con miras a mejorar progresivamente su desempeño.
-      </p>
+      <p>Propósito: acompañar al docente del Nivel Primario en su práctica pedagógica, identificando las fortalezas y oportunidades de mejora sobre las cuales se construyen acuerdos y compromisos, con miras a mejorar progresivamente su desempeño.</p>
     </div>
 
     <form id="formAcompanamiento">
@@ -563,22 +548,18 @@
               <input type="text" id="codigoSigerd" name="codigoSigerd" placeholder="Digite el código del centro" />
               <div id="estadoBusquedaCentro" class="estado-busqueda"></div>
             </div>
-
             <div class="campo">
               <label for="regional">Regional</label>
               <input type="text" id="regional" name="regional" disabled />
             </div>
-
             <div class="campo">
               <label for="distrito">Distrito</label>
               <input type="text" id="distrito" name="distrito" disabled />
             </div>
-
             <div class="campo">
               <label for="centroEducativo">Nombre del Centro</label>
               <input type="text" id="centroEducativo" name="centroEducativo" disabled />
             </div>
-
             <div class="campo">
               <label for="sector">Sector</label>
               <input type="text" id="sector" name="sector" disabled />
@@ -604,7 +585,6 @@
           </div>
 
           <div class="subtitulo" style="margin-top:18px;">Informaciones del acompañante</div>
-
           <div class="grid g-4">
             <div class="campo">
               <label for="acompananteCedula">Cédula</label>
@@ -630,7 +610,6 @@
           </div>
 
           <div class="subtitulo" style="margin-top:18px;">Informaciones del acompañamiento</div>
-
           <div class="grid g-4">
             <div class="campo">
               <label for="acompanadoCedula">Cédula del docente</label>
@@ -676,16 +655,8 @@
               <label for="seccion">Sección</label>
               <select id="seccion" name="seccion">
                 <option value="">Seleccione</option>
-                <option>A</option>
-                <option>B</option>
-                <option>C</option>
-                <option>D</option>
-                <option>E</option>
-                <option>F</option>
-                <option>G</option>
-                <option>H</option>
-                <option>I</option>
-                <option>J</option>
+                <option>A</option><option>B</option><option>C</option><option>D</option><option>E</option>
+                <option>F</option><option>G</option><option>H</option><option>I</option><option>J</option>
               </select>
             </div>
           </div>
@@ -715,7 +686,6 @@
           </div>
 
           <div class="subtitulo" style="margin-top:18px;">Cantidad de estudiantes</div>
-
           <div class="grid g-4 fila-linea">
             <div class="campo">
               <label for="inscritos">Inscritos</label>
@@ -758,12 +728,10 @@
             <label for="foco">Describa el foco o propósito del acompañamiento</label>
             <textarea id="foco" name="foco"></textarea>
           </div>
-
           <div class="campo" style="margin-top:14px;">
             <label for="intencionDocente">Describa la intención pedagógica del docente</label>
             <textarea id="intencionDocente" name="intencionDocente"></textarea>
           </div>
-
           <div class="campo" style="margin-top:14px;">
             <label for="contenidoConceptual">Especifique el contenido conceptual abordado por el docente</label>
             <textarea id="contenidoConceptual" name="contenidoConceptual"></textarea>
@@ -798,34 +766,19 @@
 
           <div class="resumen-automatico">
             <h3>Resumen automático de indicadores por nivel</h3>
-            <div class="chips-resumen" id="resumenIndicadores">
-              <div class="chip-resumen">Nivel 1: 0</div>
-              <div class="chip-resumen">Nivel 2: 0</div>
-              <div class="chip-resumen">Nivel 3: 0</div>
-              <div class="chip-resumen">Nivel 4: 0</div>
-              <div class="chip-resumen">Sin responder: 0</div>
-              <div class="chip-resumen">Total de indicadores: 0</div>
-              <div class="chip-resumen">Total observado para porcentaje: 0</div>
-            </div>
-            <div class="porcentajes-niveles" id="porcentajesNiveles">
-              <div class="porcentaje-box">
-                <div class="nivel">Nivel 1</div>
-                <div class="valor">0%</div>
-                <div class="detalle">Calculado sin incluir el nivel 4</div>
-              </div>
-              <div class="porcentaje-box">
-                <div class="nivel">Nivel 2</div>
-                <div class="valor">0%</div>
-                <div class="detalle">Calculado sin incluir el nivel 4</div>
-              </div>
-              <div class="porcentaje-box">
-                <div class="nivel">Nivel 3</div>
-                <div class="valor">0%</div>
-                <div class="detalle">Calculado sin incluir el nivel 4</div>
-              </div>
-              
-            </div>
+            <div class="chips-resumen" id="resumenIndicadores"></div>
+            <div class="porcentajes-niveles" id="porcentajesNiveles"></div>
           </div>
+
+          <div class="sugerencias-acuerdos">
+            <h3>Acuerdos sugeridos según la escala</h3>
+            <p>Se muestran sugerencias automáticas para los indicadores marcados en nivel 1 o 2. Puede seleccionar las que desee incorporar y agregarlas al campo de acuerdos.</p>
+            <div class="lista-sugerencias" id="listaSugerenciasAcuerdos"></div>
+            <div class="acciones-sugerencias">
+              <button type="button" class="btn-secundario" onclick="agregarAcuerdosSeleccionados()">Agregar acuerdos seleccionados</button>
+              <button type="button" class="btn-secundario" onclick="seleccionarTodasSugerencias()">Seleccionar todas</button>
+              <button type="button" class="btn-secundario" onclick="limpiarSeleccionSugerencias()">Limpiar selección</button>
+            </div>
           </div>
         </div>
       </section>
@@ -837,34 +790,29 @@
             <label for="acuerdos">Acuerdos / Compromisos</label>
             <textarea id="acuerdos" name="acuerdos" style="min-height:220px;"></textarea>
           </div>
-
-          <div class="lineas-firmas">
-            <div class="firmas">
-              <div class="firma">
-                <div class="linea"></div>
-                <div>Nombre del/la docente acompañado(a)</div>
-              </div>
-              <div class="firma">
-                <div class="linea"></div>
-                <div>Nombre del coordinador(a) docente</div>
-              </div>
-            </div>
-
-            <div class="firma-central">
+          <div class="firmas">
+            <div class="firma">
               <div class="linea"></div>
-              <div>Director(a) del centro</div>
-              <div style="margin-top:8px; font-weight:700;">SELLO CENTRO</div>
+              <div>Nombre del/la docente acompañado(a)</div>
             </div>
-
-            <div class="firma-central">
+            <div class="firma">
               <div class="linea"></div>
-              <div>Nombre del técnico(a) docente</div>
+              <div>Nombre del coordinador(a) docente</div>
             </div>
+          </div>
+          <div class="firma-central">
+            <div class="linea"></div>
+            <div>Director(a) del centro</div>
+            <div style="margin-top:8px; font-weight:700;">SELLO CENTRO</div>
+          </div>
+          <div class="firma-central">
+            <div class="linea"></div>
+            <div>Nombre del técnico(a) docente</div>
           </div>
         </div>
       </section>
-      
-      <div class="acciones" style="margin-top:20px; border-top:1px solid #ddeaf4;">
+
+      <div class="acciones">
         <button type="button" class="btn-primario" onclick="window.print()">Imprimir / Guardar PDF</button>
         <button type="button" class="btn-secundario" onclick="guardarBorrador()">Guardar borrador</button>
         <button type="submit" class="btn-primario">Enviar</button>
@@ -873,15 +821,9 @@
     </form>
 
     <div class="pie">
-      <div class="pie" style="text-align:center; line-height:1.6;">
-  &copy; <span id="year"></span> Ministerio de Educación (MINERD). Dirección de Educación Primaria.<br>
-  Instrumento elaborado por el equipo técnico de la Dirección de Educación Primaria.<br>
-  Desarrollo tecnológico: Aneudy Minier.
-</div>
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+      &copy; <span id="year"></span> Ministerio de Educación (MINERD). Dirección de Educación Primaria.<br>
+      Instrumento elaborado por el equipo técnico de la Dirección de Educación Primaria.<br>
+      Desarrollo técnico: Aneudy Minier.
     </div>
   </div>
 
@@ -895,13 +837,11 @@
       { codigo: '1.5', texto: 'Se observan estrategias y actividades diferenciadas para atender a la diversidad del aula.' },
       { codigo: '1.6', texto: 'Elabora actividades de evaluación alineadas con la intención pedagógica e instrumentos para registrar los aprendizajes obtenidos por los estudiantes.' },
       { codigo: '1.7', texto: 'Se evidencia en la planificación diaria recursos didácticos previamente seleccionados en función al desarrollo de los contenidos a desarrollar y la intención pedagógica.' },
-
       { tipo: 'seccion', titulo: '2. Momentos de la práctica pedagógica' },
       { tipo: 'subseccion', titulo: 'Actividades de inicio' },
       { codigo: '2.1', texto: 'Realiza la retroalimentación del tema anterior utilizando estrategias innovadoras.' },
       { codigo: '2.2', texto: 'Comparte con los alumnos la intención pedagógica de la clase como medio para motivar el aprendizaje.' },
       { codigo: '2.3', texto: 'Explora los conocimientos previos de los alumnos como punto de partida para el desarrollo de la temática.' },
-
       { tipo: 'subseccion', titulo: 'Actividades de desarrollo' },
       { codigo: '2.4', texto: 'La clase está orientada al desarrollo de las competencias del área que está impartiendo.' },
       { codigo: '2.5', texto: 'Hace uso efectivo de las secuencias didácticas del área y del ciclo en el que está trabajando.' },
@@ -914,17 +854,14 @@
       { codigo: '2.12', texto: 'Durante el desarrollo de la clase se evidencia un rol protagónico de los estudiantes, construyendo sus aprendizajes de manera reflexiva.' },
       { codigo: '2.13', texto: 'Se evidencia una disciplina funcional fundamentada en el respeto durante el desarrollo de la clase.' },
       { codigo: '2.14', texto: 'Se evidencia una distribución efectiva del tiempo para cada uno de los momentos: inicio, desarrollo y cierre.' },
-
       { tipo: 'subseccion', titulo: 'Actividades de cierre' },
       { codigo: '2.15', texto: 'Realiza una actividad o ejercicio de evaluación alineada con la intención pedagógica, usando alguna técnica o instrumento de evaluación para registrar los aprendizajes obtenidos por los estudiantes.' },
       { codigo: '2.16', texto: 'Realiza el cierre pedagógico de la clase retomando la intención pedagógica presentada y socializada al inicio de la clase.' },
-
       { tipo: 'seccion', titulo: '3. Aspectos a tomar en cuenta' },
       { codigo: '3.1', texto: 'El docente muestra evidencia de la realización de evaluaciones sistemáticas y periódicas para determinar el nivel de avance de los estudiantes en el aprendizaje. Tiene constancia del nivel de avance de cada uno.' },
       { codigo: '3.2', texto: 'El docente hace un uso correcto del registro de grado completando todos los aspectos que tiene que haber trabajado al momento del acompañamiento.' },
       { codigo: '3.3', texto: 'Los cuadernos de los niños están organizados y hay evidencias de un trabajo sistemático mostrando coherencia entre lo planificado por el docente y lo trabajado por los estudiantes.' },
       { codigo: '3.4', texto: 'Los portafolios de los estudiantes están organizados y tienen evidencias de las evaluaciones y producciones de los estudiantes que permiten visualizar la evolución de sus aprendizajes.' },
-
       { tipo: 'seccion', titulo: '4. Una mirada reflexiva de la clase acompañada' },
       { codigo: '4.1', texto: 'El docente logra identificar sus fortalezas a partir de las preguntas reflexivas realizadas por el acompañante.' },
       { codigo: '4.2', texto: 'Logra identificar las oportunidades de mejora a partir de las preguntas reflexivas realizadas por el acompañante.' },
@@ -932,9 +869,53 @@
       { codigo: '4.4', texto: 'Construye los acuerdos tomando en cuenta las oportunidades de mejora detectadas en el acompañamiento, los escribe y muestra una actitud positiva con el cumplimiento de estos.' }
     ];
 
+    const sugerenciasPorIndicador = {
+      '1.1': 'Elaborar la planificación alineada con las estrategias orientadas desde el Nivel Primario.',
+      '1.2': 'Actualizar la planificación diaria tomando como base la planificación de unidad y las competencias del grado y del área.',
+      '1.3': 'Incorporar de manera sistemática las guías didácticas del ciclo en la planificación diaria.',
+      '1.4': 'Revisar la coherencia entre la intención pedagógica y las actividades previstas para cada momento de la clase.',
+      '1.5': 'Incluir estrategias diferenciadas para atender la diversidad del aula.',
+      '1.6': 'Diseñar actividades e instrumentos de evaluación alineados con la intención pedagógica.',
+      '1.7': 'Seleccionar previamente los recursos didácticos según el contenido y la intención pedagógica.',
+      '2.1': 'Implementar estrategias innovadoras para la retroalimentación del tema anterior.',
+      '2.2': 'Comunicar explícitamente la intención pedagógica al inicio de cada clase.',
+      '2.3': 'Incorporar actividades para explorar los conocimientos previos de los estudiantes.',
+      '2.4': 'Orientar las actividades de clase al desarrollo de las competencias del área.',
+      '2.5': 'Fortalecer el uso de las secuencias didácticas del área y del ciclo.',
+      '2.6': 'Brindar acompañamiento más activo a los estudiantes durante la construcción del aprendizaje.',
+      '2.7': 'Ajustar la secuencia de actividades para que responda mejor a la intención pedagógica.',
+      '2.8': 'Diseñar actividades específicas para atender necesidades educativas individuales.',
+      '2.9': 'Fortalecer el dominio de los contenidos del área acompañada.',
+      '2.10': 'Ambientar el aula con mayor sentido pedagógico y en coherencia con los contenidos curriculares.',
+      '2.11': 'Utilizar recursos y tecnología de forma más pertinente para favorecer el desarrollo de competencias.',
+      '2.12': 'Promover un rol más protagónico del estudiante en la construcción de sus aprendizajes.',
+      '2.13': 'Fortalecer una disciplina funcional basada en el respeto durante toda la clase.',
+      '2.14': 'Organizar mejor el tiempo destinado a inicio, desarrollo y cierre de la clase.',
+      '2.15': 'Aplicar actividades de evaluación alineadas con la intención pedagógica y registrar los resultados obtenidos.',
+      '2.16': 'Realizar cierres pedagógicos que retomen la intención y los aprendizajes desarrollados en la clase.',
+      '3.1': 'Realizar evaluaciones sistemáticas y periódicas para dar seguimiento al avance de cada estudiante.',
+      '3.2': 'Mantener actualizado el registro de grado conforme a los aspectos trabajados.',
+      '3.3': 'Organizar los cuadernos de los estudiantes de manera coherente con la planificación y el trabajo de aula.',
+      '3.4': 'Fortalecer el uso del portafolio como evidencia de evaluación y seguimiento del aprendizaje.',
+      '4.1': 'Profundizar la reflexión sobre las fortalezas identificadas durante el acompañamiento.',
+      '4.2': 'Identificar con mayor claridad las oportunidades de mejora de la práctica pedagógica.',
+      '4.3': 'Mantener una actitud abierta y colaborativa frente a la retroalimentación recibida.',
+      '4.4': 'Formular acuerdos concretos y dar seguimiento a su cumplimiento en el próximo acompañamiento.'
+    };
+
     const tabla = document.getElementById('tablaIndicadores');
     const resumenIndicadores = document.getElementById('resumenIndicadores');
     const porcentajesNiveles = document.getElementById('porcentajesNiveles');
+    const listaSugerenciasAcuerdos = document.getElementById('listaSugerenciasAcuerdos');
+
+    function escaparHTML(texto) {
+      return String(texto)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
 
     function crearTabla() {
       tabla.innerHTML = '';
@@ -942,108 +923,128 @@
         if (item.tipo === 'seccion') {
           const tr = document.createElement('tr');
           tr.className = 'fila-seccion';
-          tr.innerHTML = `<td colspan="7">${item.titulo}</td>`;
+          tr.innerHTML = '<td colspan="7">' + item.titulo + '</td>';
           tabla.appendChild(tr);
           return;
         }
-
         if (item.tipo === 'subseccion') {
           const tr = document.createElement('tr');
           tr.className = 'fila-subseccion';
-          tr.innerHTML = `<td colspan="7">${item.titulo}</td>`;
+          tr.innerHTML = '<td colspan="7">' + item.titulo + '</td>';
           tabla.appendChild(tr);
           return;
         }
 
         const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td class="col-codigo">${item.codigo}</td>
-          <td class="col-indicador">${item.texto}</td>
-          ${[1,2,3,4].map(v => `
-            <td class="col-valor">
-              <label class="valoracion">
-                <input type="radio" name="val_${item.codigo}" value="${v}" onchange="actualizarResumenIndicadores()">
-              </label>
-            </td>
-          `).join('')}
-          <td class="col-obs"><textarea name="obs_${item.codigo}" placeholder="Observaciones para ${item.codigo}" style="min-height:72px;"></textarea></td>
-        `;
+        let radios = '';
+        [1, 2, 3, 4].forEach(v => {
+          radios += '<td class="col-valor"><label class="valoracion"><input type="radio" name="val_' + item.codigo + '" value="' + v + '"></label></td>';
+        });
+        tr.innerHTML = '<td class="col-codigo">' + item.codigo + '</td>' +
+          '<td class="col-indicador">' + item.texto + '</td>' +
+          radios +
+          '<td class="col-obs"><textarea name="obs_' + item.codigo + '" placeholder="Observaciones para ' + item.codigo + '" style="min-height:72px;"></textarea></td>';
         tabla.appendChild(tr);
+      });
+
+      document.querySelectorAll('input[type="radio"][name^="val_"]').forEach(el => {
+        el.addEventListener('change', actualizarResumenIndicadores);
       });
     }
 
     function actualizarResumenIndicadores() {
       const totales = { 1: 0, 2: 0, 3: 0, 4: 0 };
       const totalIndicadores = indicadores.filter(item => item.codigo).length;
+      const sugerencias = [];
 
       indicadores.forEach(item => {
         if (!item.codigo) return;
-        const seleccionado = document.querySelector(`input[name="val_${item.codigo}"]:checked`);
+        const seleccionado = document.querySelector('input[name="val_' + item.codigo + '"]:checked');
         if (seleccionado) {
-          totales[seleccionado.value]++;
+          const nivel = seleccionado.value;
+          totales[nivel]++;
+          if ((nivel === '1' || nivel === '2') && sugerenciasPorIndicador[item.codigo]) {
+            sugerencias.push({ codigo: item.codigo, nivel: nivel, texto: sugerenciasPorIndicador[item.codigo] });
+          }
         }
       });
 
       const respondidos = totales[1] + totales[2] + totales[3] + totales[4];
       const sinResponder = totalIndicadores - respondidos;
       const basePorcentaje = totalIndicadores - totales[4];
-
       const pct = valor => basePorcentaje > 0 ? ((valor / basePorcentaje) * 100).toFixed(1) : '0.0';
 
-      resumenIndicadores.innerHTML = `
-        <div class="chip-resumen">Nivel 1: ${totales[1]}</div>
-        <div class="chip-resumen">Nivel 2: ${totales[2]}</div>
-        <div class="chip-resumen">Nivel 3: ${totales[3]}</div>
-        <div class="chip-resumen">Nivel 4: ${totales[4]}</div>
-        <div class="chip-resumen">Sin responder: ${sinResponder}</div>
-        <div class="chip-resumen">Total de indicadores: ${totalIndicadores}</div>
-        <div class="chip-resumen">Total observado para porcentaje: ${basePorcentaje}</div>
-      `;
+      resumenIndicadores.innerHTML = '' +
+        '<div class="chip-resumen">Nivel 1: ' + totales[1] + '</div>' +
+        '<div class="chip-resumen">Nivel 2: ' + totales[2] + '</div>' +
+        '<div class="chip-resumen">Nivel 3: ' + totales[3] + '</div>' +
+        '<div class="chip-resumen">Nivel 4: ' + totales[4] + '</div>' +
+        '<div class="chip-resumen">Sin responder: ' + sinResponder + '</div>' +
+        '<div class="chip-resumen">Total de indicadores: ' + totalIndicadores + '</div>' +
+        '<div class="chip-resumen">Total observado para porcentaje: ' + basePorcentaje + '</div>';
 
-      porcentajesNiveles.innerHTML = `
-        <div class="porcentaje-box">
-          <div class="nivel">Nivel 1</div>
-          <div class="valor">${pct(totales[1])}%</div>
-          <div class="detalle">${totales[1]} de ${basePorcentaje} indicadores observados</div>
-        </div>
-        <div class="porcentaje-box">
-          <div class="nivel">Nivel 2</div>
-          <div class="valor">${pct(totales[2])}%</div>
-          <div class="detalle">${totales[2]} de ${basePorcentaje} indicadores observados</div>
-        </div>
-        <div class="porcentaje-box">
-          <div class="nivel">Nivel 3</div>
-          <div class="valor">${pct(totales[3])}%</div>
-          <div class="detalle">${totales[3]} de ${basePorcentaje} indicadores observados</div>
-        </div>
-      `;
+      porcentajesNiveles.innerHTML = '' +
+        '<div class="porcentaje-box"><div class="nivel">Nivel 1</div><div class="valor">' + pct(totales[1]) + '%</div><div class="detalle">' + totales[1] + ' de ' + basePorcentaje + ' indicadores observados</div></div>' +
+        '<div class="porcentaje-box"><div class="nivel">Nivel 2</div><div class="valor">' + pct(totales[2]) + '%</div><div class="detalle">' + totales[2] + ' de ' + basePorcentaje + ' indicadores observados</div></div>' +
+        '<div class="porcentaje-box"><div class="nivel">Nivel 3</div><div class="valor">' + pct(totales[3]) + '%</div><div class="detalle">' + totales[3] + ' de ' + basePorcentaje + ' indicadores observados</div></div>';
+
+      if (!sugerencias.length) {
+        listaSugerenciasAcuerdos.innerHTML = '<div class="sugerencia-vacia">Aún no hay sugerencias. Marque indicadores en nivel 1 o 2 para generarlas.</div>';
+        return;
+      }
+
+      let html = '';
+      sugerencias.forEach((sug, idx) => {
+        const textoSeguro = escaparHTML(sug.texto);
+        html += '<label class="sugerencia-item" for="sug_' + idx + '">' +
+          '<input type="checkbox" id="sug_' + idx + '" class="check-sugerencia" data-texto="' + textoSeguro + '">' +
+          '<div><div class="sugerencia-codigo">Indicador ' + sug.codigo + ' · Nivel ' + sug.nivel + '</div>' +
+          '<div class="sugerencia-texto">' + textoSeguro + '</div></div></label>';
+      });
+      listaSugerenciasAcuerdos.innerHTML = html;
+    }
+
+    function agregarAcuerdosSeleccionados() {
+      const checks = document.querySelectorAll('.check-sugerencia:checked');
+      const acuerdos = document.getElementById('acuerdos');
+      if (!checks.length) {
+        alert('Seleccione al menos una sugerencia de acuerdo.');
+        return;
+      }
+      const existentes = acuerdos.value.trim();
+      const nuevos = Array.from(checks).map(ch => '• ' + ch.dataset.texto).join('\n');
+      acuerdos.value = existentes ? existentes + '\n' + nuevos : nuevos;
+    }
+
+    function seleccionarTodasSugerencias() {
+      document.querySelectorAll('.check-sugerencia').forEach(ch => { ch.checked = true; });
+    }
+
+    function limpiarSeleccionSugerencias() {
+      document.querySelectorAll('.check-sugerencia').forEach(ch => { ch.checked = false; });
     }
 
     function actualizarSelectorTipoCentro() {
-      const tipo = document.querySelector('input[name="tipoCentro"]:checked')?.value || 'No';
+      const tipo = document.querySelector('input[name="tipoCentro"]:checked') ? document.querySelector('input[name="tipoCentro"]:checked').value : 'No';
       const bloqueGradoRegular = document.getElementById('bloqueGradoRegular');
       const bloqueGradosMulti = document.getElementById('bloqueGradosMulti');
       const bloqueCicloRegular = document.getElementById('bloqueCicloRegular');
       const bloqueCiclosMulti = document.getElementById('bloqueCiclosMulti');
-      const radiosGrado = document.querySelectorAll('input[name="gradoUnico"]');
-      const checksGrado = document.querySelectorAll('input[name="gradosMultigrado"]');
-      const radiosCiclo = document.querySelectorAll('input[name="ciclo"]');
-      const checksCiclo = document.querySelectorAll('input[name="ciclosMultigrado"]');
 
       if (tipo === 'Sí') {
         bloqueGradoRegular.classList.add('oculto');
         bloqueGradosMulti.classList.remove('oculto');
         bloqueCicloRegular.classList.add('oculto');
         bloqueCiclosMulti.classList.remove('oculto');
-        radiosGrado.forEach(radio => radio.checked = false);
-        radiosCiclo.forEach(radio => radio.checked = false);
+        document.querySelectorAll('input[name="gradoUnico"]').forEach(r => { r.checked = false; });
+        document.querySelectorAll('input[name="ciclo"]').forEach(r => { r.checked = false; });
       } else {
         bloqueGradoRegular.classList.remove('oculto');
         bloqueGradosMulti.classList.add('oculto');
         bloqueCicloRegular.classList.remove('oculto');
         bloqueCiclosMulti.classList.add('oculto');
-        checksGrado.forEach(ch => ch.checked = false);
-        checksCiclo.forEach(ch => ch.checked = false);
+        document.querySelectorAll('input[name="gradosMultigrado"]').forEach(c => { c.checked = false; });
+        document.querySelectorAll('input[name="ciclosMultigrado"]').forEach(c => { c.checked = false; });
       }
     }
 
@@ -1051,7 +1052,9 @@
       const form = document.getElementById('formAcompanamiento');
       const data = new FormData(form);
       const obj = {};
-      for (const [key, value] of data.entries()) {
+      for (const pair of data.entries()) {
+        const key = pair[0];
+        const value = pair[1];
         if (obj[key] !== undefined) {
           if (!Array.isArray(obj[key])) obj[key] = [obj[key]];
           obj[key].push(value);
@@ -1081,40 +1084,30 @@
     async function autocompletarAcompanante() {
       const cedula = document.getElementById('acompananteCedula').value.trim();
       const estado = document.getElementById('estadoBusquedaAcompanante');
-      if (!cedula) {
-        estado.textContent = '';
-        return;
-      }
-      estado.innerHTML = '<span class="estado-aviso">Pendiente de conexión con la base de datos.</span>';
+      estado.textContent = cedula ? 'Pendiente de conexión con la base de datos.' : '';
     }
 
     async function autocompletarAcompanado() {
       const cedula = document.getElementById('acompanadoCedula').value.trim();
       const estado = document.getElementById('estadoBusquedaAcompanado');
-      if (!cedula) {
-        estado.textContent = '';
-        return;
-      }
-      estado.innerHTML = '<span class="estado-aviso">Pendiente de conexión con la base de datos.</span>';
+      estado.textContent = cedula ? 'Pendiente de conexión con la base de datos.' : '';
     }
 
     async function autocompletarCentro() {
       const codigo = document.getElementById('codigoSigerd').value.trim();
       const estado = document.getElementById('estadoBusquedaCentro');
-      if (!codigo) {
-        estado.textContent = '';
-        return;
-      }
-      estado.innerHTML = '<span class="estado-aviso">Pendiente de conexión con la base de datos.</span>';
+      estado.textContent = codigo ? 'Pendiente de conexión con la base de datos.' : '';
     }
 
     document.querySelectorAll('input[name="tipoCentro"]').forEach(radio => {
       radio.addEventListener('change', actualizarSelectorTipoCentro);
     });
-
     document.getElementById('acompananteCedula').addEventListener('blur', autocompletarAcompanante);
     document.getElementById('acompanadoCedula').addEventListener('blur', autocompletarAcompanado);
     document.getElementById('codigoSigerd').addEventListener('blur', autocompletarCentro);
+
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     crearTabla();
     actualizarSelectorTipoCentro();
