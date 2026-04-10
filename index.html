@@ -102,7 +102,6 @@
     .g-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .g-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .g-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-    .g-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
 
     .campo {
       display: flex;
@@ -231,22 +230,6 @@
       margin: 0 0 12px;
       font-size: 16px;
       color: var(--azul-oscuro);
-    }
-
-    .chips-resumen {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .chip-resumen {
-      background: #e8f4fb;
-      border: 1px solid #cfe3f2;
-      color: #0f4d74;
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-size: 13px;
-      font-weight: 700;
     }
 
     .porcentajes-niveles {
@@ -444,6 +427,10 @@
       display: none;
     }
 
+    .firmas-impresion {
+      display: none;
+    }
+
     @media print {
       .sugerencias-acuerdos {
         display: none !important;
@@ -452,10 +439,14 @@
       .solo-impresion {
         display: block !important;
       }
+
+      .firmas-impresion {
+        display: block !important;
+      }
     }
 
     @media (max-width: 980px) {
-      .g-2, .g-3, .g-4, .g-5, .g-6, .firmas, .porcentajes-niveles {
+      .g-2, .g-3, .g-4, .g-5, .firmas, .porcentajes-niveles {
         grid-template-columns: 1fr;
       }
 
@@ -622,7 +613,6 @@
             </div>
           </div>
 
-          <div class="solo-impresion">
           <div class="subtitulo" style="margin-top:18px;">Informaciones del acompañamiento</div>
           <div class="grid g-4">
             <div class="campo">
@@ -699,16 +689,6 @@
               <option>F</option><option>G</option><option>H</option><option>I</option><option>J</option>
             </select>
           </div>
-
-                    <div class="campo fila-linea">
-            <label for="seccion">Sección</label>
-            <select id="seccion" name="seccion">
-              <option value="">Seleccione</option>
-              <option>A</option><option>B</option><option>C</option><option>D</option><option>E</option>
-              <option>F</option><option>G</option><option>H</option><option>I</option><option>J</option>
-            </select>
-          </div>
-        </div>
 
           <div class="subtitulo" style="margin-top:18px;">Cantidad de estudiantes</div>
           <div class="grid g-4 fila-linea">
@@ -791,7 +771,6 @@
 
           <div class="resumen-automatico">
             <h3>Resumen automático de indicadores por nivel</h3>
-            <div class="chips-resumen" id="resumenIndicadores"></div>
             <div class="porcentajes-niveles" id="porcentajesNiveles"></div>
           </div>
 
@@ -815,24 +794,27 @@
             <label for="acuerdos">Acuerdos / Compromisos</label>
             <textarea id="acuerdos" name="acuerdos" style="min-height:220px;"></textarea>
           </div>
-          <div class="firmas">
-            <div class="firma">
-              <div class="linea"></div>
-              <div>Nombre del/la docente acompañado(a)</div>
+
+          <div class="firmas-impresion">
+            <div class="firmas">
+              <div class="firma">
+                <div class="linea"></div>
+                <div>Nombre del/la docente acompañado(a)</div>
+              </div>
+              <div class="firma">
+                <div class="linea"></div>
+                <div>Nombre del coordinador(a) docente</div>
+              </div>
             </div>
-            <div class="firma">
+            <div class="firma-central">
               <div class="linea"></div>
-              <div>Nombre del coordinador(a) docente</div>
+              <div>Director(a) del centro</div>
+              <div style="margin-top:8px; font-weight:700;">SELLO CENTRO</div>
             </div>
-          </div>
-          <div class="firma-central">
-            <div class="linea"></div>
-            <div>Director(a) del centro</div>
-            <div style="margin-top:8px; font-weight:700;">SELLO CENTRO</div>
-          </div>
-          <div class="firma-central">
-            <div class="linea"></div>
-            <div>Nombre del técnico(a) docente</div>
+            <div class="firma-central">
+              <div class="linea"></div>
+              <div>Nombre del técnico(a) docente</div>
+            </div>
           </div>
         </div>
       </section>
@@ -862,11 +844,13 @@
       { codigo: '1.5', texto: 'Se observan estrategias y actividades diferenciadas para atender a la diversidad del aula.' },
       { codigo: '1.6', texto: 'Elabora actividades de evaluación alineadas con la intención pedagógica e instrumentos para registrar los aprendizajes obtenidos por los estudiantes.' },
       { codigo: '1.7', texto: 'Se evidencia en la planificación diaria recursos didácticos previamente seleccionados en función al desarrollo de los contenidos a desarrollar y la intención pedagógica.' },
+
       { tipo: 'seccion', titulo: '2. Momentos de la práctica pedagógica' },
       { tipo: 'subseccion', titulo: 'Actividades de inicio' },
       { codigo: '2.1', texto: 'Realiza la retroalimentación del tema anterior utilizando estrategias innovadoras.' },
       { codigo: '2.2', texto: 'Comparte con los alumnos la intención pedagógica de la clase como medio para motivar el aprendizaje.' },
       { codigo: '2.3', texto: 'Explora los conocimientos previos de los alumnos como punto de partida para el desarrollo de la temática.' },
+
       { tipo: 'subseccion', titulo: 'Actividades de desarrollo' },
       { codigo: '2.4', texto: 'La clase está orientada al desarrollo de las competencias del área que está impartiendo.' },
       { codigo: '2.5', texto: 'Hace uso efectivo de las secuencias didácticas del área y del ciclo en el que está trabajando.' },
@@ -879,14 +863,17 @@
       { codigo: '2.12', texto: 'Durante el desarrollo de la clase se evidencia un rol protagónico de los estudiantes, construyendo sus aprendizajes de manera reflexiva.' },
       { codigo: '2.13', texto: 'Se evidencia una disciplina funcional fundamentada en el respeto durante el desarrollo de la clase.' },
       { codigo: '2.14', texto: 'Se evidencia una distribución efectiva del tiempo para cada uno de los momentos: inicio, desarrollo y cierre.' },
+
       { tipo: 'subseccion', titulo: 'Actividades de cierre' },
       { codigo: '2.15', texto: 'Realiza una actividad o ejercicio de evaluación alineada con la intención pedagógica, usando alguna técnica o instrumento de evaluación para registrar los aprendizajes obtenidos por los estudiantes.' },
       { codigo: '2.16', texto: 'Realiza el cierre pedagógico de la clase retomando la intención pedagógica presentada y socializada al inicio de la clase.' },
+
       { tipo: 'seccion', titulo: '3. Aspectos a tomar en cuenta' },
       { codigo: '3.1', texto: 'El docente muestra evidencia de la realización de evaluaciones sistemáticas y periódicas para determinar el nivel de avance de los estudiantes en el aprendizaje. Tiene constancia del nivel de avance de cada uno.' },
       { codigo: '3.2', texto: 'El docente hace un uso correcto del registro de grado completando todos los aspectos que tiene que haber trabajado al momento del acompañamiento.' },
       { codigo: '3.3', texto: 'Los cuadernos de los niños están organizados y hay evidencias de un trabajo sistemático mostrando coherencia entre lo planificado por el docente y lo trabajado por los estudiantes.' },
       { codigo: '3.4', texto: 'Los portafolios de los estudiantes están organizados y tienen evidencias de las evaluaciones y producciones de los estudiantes que permiten visualizar la evolución de sus aprendizajes.' },
+
       { tipo: 'seccion', titulo: '4. Una mirada reflexiva de la clase acompañada' },
       { codigo: '4.1', texto: 'El docente logra identificar sus fortalezas a partir de las preguntas reflexivas realizadas por el acompañante.' },
       { codigo: '4.2', texto: 'Logra identificar las oportunidades de mejora a partir de las preguntas reflexivas realizadas por el acompañante.' },
@@ -925,7 +912,6 @@
     };
 
     const tabla = document.getElementById('tablaIndicadores');
-    const resumenIndicadores = document.getElementById('resumenIndicadores');
     const porcentajesNiveles = document.getElementById('porcentajesNiveles');
     const listaSugerenciasAcuerdos = document.getElementById('listaSugerenciasAcuerdos');
 
@@ -991,16 +977,151 @@
         }
       });
 
-      const respondidos = totales[1] + totales[2] + totales[3] + totales[4];
-      const sinResponder = totalIndicadores - respondidos;
       const basePorcentaje = totalIndicadores - totales[4];
       const pct = valor => basePorcentaje > 0 ? ((valor / basePorcentaje) * 100).toFixed(1) : '0.0';
 
-      resumenIndicadores.innerHTML = '' +
-        '<div class="chip-resumen">Nivel 1: ' + totales[1] + '</div>' +
-        '<div class="chip-resumen">Nivel 2: ' + totales[2] + '</div>' +
-        '<div class="chip-resumen">Nivel 3: ' + totales[3] + '</div>' +
-        '<div class="chip-resumen">Nivel 4: ' + totales[4] + '</div>' +
-        '<div class="chip-resumen">Sin responder: ' + sinResponder + '</div>' +
-        '<div class="chip-resumen">Total de indicadores: ' + totalIndicadores + '</div>' +
-        '<div class="chip-resumen">Total observado para porcentaje: ' 
+      porcentajesNiveles.innerHTML = '' +
+        '<div class="porcentaje-box"><div class="nivel">Nivel 1</div><div class="valor">' + pct(totales[1]) + '%</div><div class="detalle">No evidenciado<br>' + totales[1] + ' de ' + basePorcentaje + ' indicadores</div></div>' +
+        '<div class="porcentaje-box"><div class="nivel">Nivel 2</div><div class="valor">' + pct(totales[2]) + '%</div><div class="detalle">Medianamente evidenciado<br>' + totales[2] + ' de ' + basePorcentaje + ' indicadores</div></div>' +
+        '<div class="porcentaje-box"><div class="nivel">Nivel 3</div><div class="valor">' + pct(totales[3]) + '%</div><div class="detalle">Evidenciado<br>' + totales[3] + ' de ' + basePorcentaje + ' indicadores</div></div>';
+
+      if (!sugerencias.length) {
+        listaSugerenciasAcuerdos.innerHTML = '<div class="sugerencia-vacia">Aún no hay sugerencias. Marque indicadores en nivel 1 o 2 para generarlas.</div>';
+        return;
+      }
+
+      const grupos = {};
+      sugerencias.forEach(sug => {
+        if (!grupos[sug.bloque]) grupos[sug.bloque] = [];
+        grupos[sug.bloque].push(sug.texto);
+      });
+
+      let html = '';
+      Object.keys(grupos).forEach(bloque => {
+        html += '<div class="sugerencia-bloque">';
+        html += '<div class="sugerencia-codigo" style="margin-bottom:6px;">' + escaparHTML(bloque) + '</div>';
+        grupos[bloque].forEach(texto => {
+          const textoSeguro = escaparHTML(texto);
+          html += '<label class="sugerencia-item">' +
+            '<input type="checkbox" class="check-sugerencia" data-texto="' + textoSeguro + '">' +
+            '<div><div class="sugerencia-texto">' + textoSeguro + '</div></div></label>';
+        });
+        html += '</div>';
+      });
+
+      listaSugerenciasAcuerdos.innerHTML = html;
+    }
+
+    function agregarAcuerdosSeleccionados() {
+      const checks = document.querySelectorAll('.check-sugerencia:checked');
+      const acuerdos = document.getElementById('acuerdos');
+      if (!checks.length) {
+        alert('Seleccione al menos una sugerencia de acuerdo.');
+        return;
+      }
+      const existentes = acuerdos.value.trim();
+      const nuevos = Array.from(checks).map(ch => '• ' + ch.dataset.texto).join('\n');
+      acuerdos.value = existentes ? existentes + '\n' + nuevos : nuevos;
+    }
+
+    function seleccionarTodasSugerencias() {
+      document.querySelectorAll('.check-sugerencia').forEach(ch => { ch.checked = true; });
+    }
+
+    function limpiarSeleccionSugerencias() {
+      document.querySelectorAll('.check-sugerencia').forEach(ch => { ch.checked = false; });
+    }
+
+    function actualizarSelectorTipoCentro() {
+      const seleccionado = document.querySelector('input[name="tipoCentro"]:checked');
+      const tipo = seleccionado ? seleccionado.value : 'No';
+      const bloqueGradoRegular = document.getElementById('bloqueGradoRegular');
+      const bloqueGradosMulti = document.getElementById('bloqueGradosMulti');
+      const bloqueCicloRegular = document.getElementById('bloqueCicloRegular');
+      const bloqueCiclosMulti = document.getElementById('bloqueCiclosMulti');
+
+      if (tipo === 'Sí') {
+        bloqueGradoRegular.classList.add('oculto');
+        bloqueGradosMulti.classList.remove('oculto');
+        bloqueCicloRegular.classList.add('oculto');
+        bloqueCiclosMulti.classList.remove('oculto');
+        document.querySelectorAll('input[name="gradoUnico"]').forEach(r => { r.checked = false; });
+        document.querySelectorAll('input[name="ciclo"]').forEach(r => { r.checked = false; });
+      } else {
+        bloqueGradoRegular.classList.remove('oculto');
+        bloqueGradosMulti.classList.add('oculto');
+        bloqueCicloRegular.classList.remove('oculto');
+        bloqueCiclosMulti.classList.add('oculto');
+        document.querySelectorAll('input[name="gradosMultigrado"]').forEach(c => { c.checked = false; });
+        document.querySelectorAll('input[name="ciclosMultigrado"]').forEach(c => { c.checked = false; });
+      }
+    }
+
+    function obtenerDatosFormulario() {
+      const form = document.getElementById('formAcompanamiento');
+      const data = new FormData(form);
+      const obj = {};
+      for (const pair of data.entries()) {
+        const key = pair[0];
+        const value = pair[1];
+        if (obj[key] !== undefined) {
+          if (!Array.isArray(obj[key])) obj[key] = [obj[key]];
+          obj[key].push(value);
+        } else {
+          obj[key] = value;
+        }
+      }
+      return obj;
+    }
+
+    function guardarBorrador() {
+      const datos = obtenerDatosFormulario();
+      localStorage.setItem('acompanamientoCentroBorrador', JSON.stringify(datos));
+      alert('Borrador guardado correctamente en este navegador.');
+    }
+
+    function limpiarFormulario() {
+      if (!confirm('¿Desea limpiar todo el formulario?')) return;
+      document.getElementById('formAcompanamiento').reset();
+      document.getElementById('estadoBusquedaCentro').textContent = '';
+      document.getElementById('estadoBusquedaAcompanante').textContent = '';
+      document.getElementById('estadoBusquedaAcompanado').textContent = '';
+      actualizarSelectorTipoCentro();
+      actualizarResumenIndicadores();
+    }
+
+    async function autocompletarAcompanante() {
+      const cedula = document.getElementById('acompananteCedula').value.trim();
+      const estado = document.getElementById('estadoBusquedaAcompanante');
+      estado.textContent = cedula ? 'Pendiente de conexión con la base de datos.' : '';
+    }
+
+    async function autocompletarAcompanado() {
+      const cedula = document.getElementById('acompanadoCedula').value.trim();
+      const estado = document.getElementById('estadoBusquedaAcompanado');
+      estado.textContent = cedula ? 'Pendiente de conexión con la base de datos.' : '';
+    }
+
+    async function autocompletarCentro() {
+      const codigo = document.getElementById('codigoSigerd').value.trim();
+      const estado = document.getElementById('estadoBusquedaCentro');
+      estado.textContent = codigo ? 'Pendiente de conexión con la base de datos.' : '';
+    }
+
+    document.querySelectorAll('input[name="tipoCentro"]').forEach(radio => {
+      radio.addEventListener('change', actualizarSelectorTipoCentro);
+    });
+
+    document.getElementById('acompananteCedula').addEventListener('blur', autocompletarAcompanante);
+    document.getElementById('acompanadoCedula').addEventListener('blur', autocompletarAcompanado);
+    document.getElementById('codigoSigerd').addEventListener('blur', autocompletarCentro);
+
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    crearTabla();
+    actualizarSelectorTipoCentro();
+    actualizarResumenIndicadores();
+  </script>
+</body>
+</html>
